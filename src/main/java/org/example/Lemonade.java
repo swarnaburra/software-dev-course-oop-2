@@ -17,32 +17,45 @@ public class Lemonade {
     }
 
     public Lemonade(int lemons, int sugar, int ice) {
-        this.lemons = lemons;
+       setLemons(lemons);
         this.sugar = sugar;
         this.ice = ice;
     }
 
     public int getLemons() {
+
         return lemons;
     }
+    public void setLemons(int lemons){
 
-    public void setLemons(int lemons) {
+        if (lemons < 0) throw new RuntimeException("Lemons cannot be negative");
+        this.lemons = lemons;
+
+    }
+    /*public void setLemons(int lemons) {
+
         this.lemons = lemons;
     }
 
+     */
+
     public int getSugar() {
+
         return sugar;
     }
 
     public void setSugar(int sugar) {
+
         this.sugar = sugar;
     }
 
     public int getIce() {
+
         return ice;
     }
 
     public void setIce(int ice) {
+
         this.ice = ice;
     }
 

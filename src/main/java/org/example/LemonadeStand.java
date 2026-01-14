@@ -44,6 +44,9 @@ public class LemonadeStand {
     }
 
     public void buySupplies(int lemons, int sugar, int ice) {
+        if (lemons < 0){
+            throw new RuntimeException("Lemons cannot be negative");
+        }
         this.lemons += lemons;
         this.sugar += sugar;
         this.ice += ice;

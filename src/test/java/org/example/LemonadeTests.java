@@ -41,4 +41,28 @@ public class LemonadeTests {
         assertEquals(5, lemonade3.getSugar());
         assertEquals(5, lemonade3.getIce());
     }
+// Negative Test case of getting negative count of lemons
+
+@Test
+    public void testNegativeLemonsThrowsException(){
+        try{
+            new Lemonade(-1, 2,3);
+
+            fail("Expected RuntimeException was not thrown");
+
+        } catch (RuntimeException e) {
+
+            assertEquals("Lemons cannot be negative", e.getMessage());
+        }
+}
+
+    // Edge Cases with all ingredients are set to zero
+
+    @Test
+    public void testZeroIngredients() {
+        Lemonade lemonade = new Lemonade(0, 0, 0);
+        assertEquals(0, lemonade.getLemons());
+        assertEquals(0, lemonade.getSugar());
+        assertEquals(0, lemonade.getIce());
+    }
 }

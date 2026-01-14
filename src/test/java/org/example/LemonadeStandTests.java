@@ -75,18 +75,29 @@ public class LemonadeStandTests {
         assertEquals(0, lemonadeStand.getMoney(), 0.01);
     }
 
-    /*
+    //Negative test case with lemons set to negative count
+
     @Test
-    public void testSellDiscountedLemonade() {
+    public void testBuySuppliesNegativeThrowsException() {
         LemonadeStand lemonadeStand = new LemonadeStand();
-        boolean result = lemonadeStand.sellLemonade(25);
-        assertTrue(result);
-        double normalPrice =
-            (Lemonade.defaultLemons * LemonadeStand.pricePerLemon) +
-            (Lemonade.defaultSugar * LemonadeStand.pricePerSugar) +
-            (Lemonade.defaultIce * LemonadeStand.pricePerIce);
-        double discount = normalPrice * 0.25;
-        assertEquals(normalPrice - discount, lemonadeStand.getMoney(), 0.01);
-  }
-  */
-}
+        try {
+            lemonadeStand.buySupplies(-1, 10, 10);
+            fail("Expected RuntimeException for negative lemons");
+        } catch (RuntimeException e) {
+            assertEquals("Lemons cannot be negative", e.getMessage());
+        }
+
+    }
+    // Edge case with all ingredients set to zero
+
+        @Test
+        public void testSellLemonadeCustomEdgeZero () {
+            LemonadeStand lemonadeStand = new LemonadeStand(0, 0, 0);
+            boolean result = lemonadeStand.sellLemonade(0, 0, 0);
+            assertTrue(result); // should succeed because zero ingredients
+            assertEquals(0, lemonadeStand.getLemons());
+            assertEquals(0, lemonadeStand.getSugar());
+            assertEquals(0, lemonadeStand.getIce());
+        }
+    }
+
